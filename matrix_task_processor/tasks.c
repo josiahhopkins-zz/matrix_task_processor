@@ -185,6 +185,7 @@ void *readtasks(void *arg)
               // Use of locks and condition variables and call to put() routine...
             printf("Just before put.\n");
             put(bufferCopy);
+            printf("Just after put.\n");
           }
 
           /* When you finish with the file, close it */

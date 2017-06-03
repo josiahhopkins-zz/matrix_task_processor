@@ -169,7 +169,7 @@ void *readtasks(void *arg)
               // remove newline from buffer string
               strtok(buffer, "\n");
 #if OUTPUT
-              printf("read form command file='%s'\n",buffer);
+              printf("read from command file='%s'\n",buffer);
 #endif
 
               //
@@ -179,11 +179,12 @@ void *readtasks(void *arg)
               printf("Read the command='%s'\n",buffer);
               
               // First make a copy of the string in the buffer
-              char bufferCopy[BUFFSIZ];
+              char bufferCopy[BUFFSIZ] = malloc(sizeof(char) * BUFFSIZ);
               strncpy(bufferCopy, buffer, sizeof(char) * BUFFSIZ);
               // Add this copy to the bounded buffer for processing by consumer threads...
               // Use of locks and condition variables and call to put() routine...
             put(bufferCopy);
+            free(bufferCopy);
           }
 
           /* When you finish with the file, close it */

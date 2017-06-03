@@ -24,6 +24,8 @@ void put(char inputBuffer[BUFFSIZ]) {
 	while(producerIndex - consumerIndex > 0 || consumerIndex - producerIndex  > 5){
 		pthread_cond_wait(&empty, &mutex);
 	}
+
+    printf("strncpy\n");
 	strncpy(tasks[producerIndex], inputBuffer, BUFFSIZ);
 	producerIndex = (producerIndex + 1) % MAX;
 	pthread_cond_signal(&fill);

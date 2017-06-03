@@ -183,9 +183,8 @@ void *readtasks(void *arg)
               strncpy(bufferCopy, buffer, sizeof(char) * BUFFSIZ);
               // Add this copy to the bounded buffer for processing by consumer threads...
               // Use of locks and condition variables and call to put() routine...
-            printf("Just before put.\n");
+            
             put(bufferCopy);
-            printf("Just after put.\n");
           }
 
           /* When you finish with the file, close it */

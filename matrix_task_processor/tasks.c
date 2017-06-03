@@ -179,7 +179,7 @@ void *readtasks(void *arg)
               printf("Read the command='%s'\n",buffer);
               
               // First make a copy of the string in the buffer
-
+              char bufferCopy[BUFFSIZ];
               strncpy(bufferCopy, buffer, sizeof(char) * BUFFSIZ);
               // Add this copy to the bounded buffer for processing by consumer threads...
               // Use of locks and condition variables and call to put() routine...

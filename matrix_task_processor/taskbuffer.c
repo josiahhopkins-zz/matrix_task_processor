@@ -25,9 +25,10 @@ void put(char inputBuffer[BUFFSIZ]) {
 		pthread_cond_wait(&empty, &mutex);
 	}
 
-    printf("strncpy\n");
 	strncpy(tasks[producerIndex], inputBuffer, BUFFSIZ);
 	producerIndex = (producerIndex + 1) % MAX;
+
+    printf("after strncpy\n");
 	pthread_cond_signal(&fill);
 	pthread_mutex_unlock(&mutex);
 }
